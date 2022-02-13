@@ -18,6 +18,14 @@ function start(){
     var velocidade = 5;
     var posicaoY = parseInt(Math.random() * 334);
     var podeAtirar=true;
+    var fimdejogo=false;
+
+    var colisao2 = ($("#jogador").collision($("#inimigo2")));
+    var colisao3 = ($("#disparo").collision($("#inimigo1")));
+    var colisao4 = ($("#disparo").collision($("#inimigo2")));
+    var colisao5 = ($("#jogador").collision($("#amigo")));
+    var colisao6 = ($("#inimigo2").collision($("#amigo")));
+
 
     jogo.pressionou = [];
 
@@ -189,5 +197,17 @@ function start(){
         }
 		
 	} // Fim da função explosao1()
+
+    // jogador com o inimigo2 
+    if (colisao2.length>0) {
+	
+        inimigo2X = parseInt($("#inimigo2").css("left"));
+        inimigo2Y = parseInt($("#inimigo2").css("top"));
+        explosao2(inimigo2X,inimigo2Y);
+                
+        $("#inimigo2").remove();
+            
+        reposicionaInimigo2();
+    }
 }
 
