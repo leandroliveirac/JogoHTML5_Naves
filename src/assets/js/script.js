@@ -5,6 +5,7 @@ function start(){
     $('#fundoGame').append('<div id="inimigo1" class="anima2"></div>');
     $('#fundoGame').append('<div id="inimigo2"></div>');
     $('#fundoGame').append('<div id="amigo" class="anima3"></div>');
+    
 
 
     //Principais variáveis do jogo
@@ -226,6 +227,19 @@ function start(){
             $("#amigo").remove();
         }
 
+        //Inimigo2 com o amigo
+		
+        if (colisao6.length>0) {
+	    
+            amigoX = parseInt($("#amigo").css("left"));
+            amigoY = parseInt($("#amigo").css("top"));
+            explosao3(amigoX,amigoY);
+            $("#amigo").remove();
+                    
+            reposicionaAmigo();
+                
+        }
+
     } //Fim da função colisao() //Fim da função colisao()
 
     //Explosão 1
@@ -268,6 +282,21 @@ function start(){
             tempoExplosao2=null;
         }
     } // Fim da função explosao2()
+
+    //Explosão3
+	
+    function explosao3(amigoX,amigoY) {
+        $("#fundoGame").append("<div id='explosao3' class='anima4'></div");
+        $("#explosao3").css("top",amigoY);
+        $("#explosao3").css("left",amigoX);
+        var tempoExplosao3=window.setInterval(resetaExplosao3, 1000);
+        function resetaExplosao3() {
+            $("#explosao3").remove();
+            window.clearInterval(tempoExplosao3);
+            tempoExplosao3=null;
+        }
+    
+    } // Fim da função explosao3
 
     //Reposiciona Inimigo2
 	
