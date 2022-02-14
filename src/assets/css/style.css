@@ -261,5 +261,7 @@ h3 {
  	margin-top:100px;
 	text-align:center;
 	padding:10px;
-
+}
+#reinicia{
+    cursor: pointer;
 }
